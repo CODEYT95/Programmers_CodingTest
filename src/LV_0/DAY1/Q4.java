@@ -1,3 +1,5 @@
+//문제 링크 : https://school.programmers.co.kr/learn/courses/30/lessons/181949
+
 package LV_0.DAY1;
 
 import java.util.Scanner;
