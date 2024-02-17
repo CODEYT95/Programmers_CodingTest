@@ -32,7 +32,6 @@ class Solution {
                         mode = 0;// mode의 값을 0로 변경
                     }
                 }
-
             }
             if (ret == "") {
                 ret = "EMPTY";

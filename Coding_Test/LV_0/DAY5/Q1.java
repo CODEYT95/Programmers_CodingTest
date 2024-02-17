@@ -1,18 +1,43 @@
-//문제 링크 : https://school.programmers.co.kr/learn/courses/30/lessons/181937?language=java
+//문제 링크 : https://school.programmers.co.kr/learn/courses/30/lessons/181932
 
-package LV_0.DAY4;
+package LV_0.DAY5;
 
 class Solution {
-    public int solution(int num, int n) {
-        int answer = 0;
+    public String solution(String code) {
+        String answer = "";
+        String ret = "";
+        int length = code.length();
+        int mode = 0;
 
-        if (2 <= num && num <= 100 && 2 <= n && n <= 9) {// 길이 제한사항
-            if (num % n == 0) { // num을 n으로 나눈 나머지가 0인경우 num은 n의 배수
-                answer = 1;
-            } else {// 나머지가 0이 아니므로 num은 n의 배수가 아닌 경우
-                answer = 0;
+        if (1 <= length && length <= 100000) {// 길이 제한사항
+
+            for (int idx = 0; idx < code.length(); idx++) {// for문 생성
+
+                if (mode == 0) {// mode가 0일 때
+                    if (code.charAt(idx) != '1' && idx % 2 == 0) {// code의 idx번째 문자가 1이 아닐 때 와 idx가 짝수일 때
+
+                        ret += code.charAt(idx); // answer에 값 넣어주기
+
+                    } else if (code.charAt(idx) == '1') {// code의 idx번째 문자가 1이 맞을 때
+
+                        mode = 1; // mode의 값을 1로 변경
+                    }
+                } else {// mode가 1일 때
+                    if (code.charAt(idx) != '1' && idx % 2 == 1) {// code의 idx번째 문자가 1이 아닐 때 와 idx가 홀수일 때
+
+                        ret += code.charAt(idx);
+
+                    } else if (code.charAt(idx) == '1') {// code의 idx번째 문자가 1이 맞을 때
+
+                        mode = 0;// mode의 값을 0로 변경
+                    }
+                }
+            }
+            if (ret == "") {
+                ret = "EMPTY";
             }
         }
-        return answer;// 값 반환
+        answer = ret;
+        return answer;
     }
 }
