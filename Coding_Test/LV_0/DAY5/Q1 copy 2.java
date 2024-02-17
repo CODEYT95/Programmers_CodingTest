@@ -1,43 +1,26 @@
-//문제 링크 : https://school.programmers.co.kr/learn/courses/30/lessons/181932
+//문제 링크 : https://school.programmers.co.kr/learn/courses/30/lessons/181930
 
 package LV_0.DAY5;
 
 class Solution {
-    public String solution(String code) {
-        String answer = "";
-        String ret = "";
-        int length = code.length();
-        int mode = 0;
+    public int solution(int a, int b, int c) {
+        int answer = 0;
 
-        if (1 <= length && length <= 100000) {// 길이 제한사항
+        if (1 <= a && a <= 6 && 1 <= b && b <= 6 && 1 <= b && b <= 6) {// 길이 제한사항
+            if (a == b && b == c && a == c) {// a,b,c 다 같을 때
+                // answer (a + b + c) × (a2 + b2 + c2 ) × (a3 + b3 + c3 ) 계산해서 넣기
+                answer = (int) ((a + b + c) * (Math.pow(a, 2) + Math.pow(b, 2) + Math.pow(c, 2))
+                        * (Math.pow(a, 3) + Math.pow(b, 3) + Math.pow(c, 3)));
 
-            for (int idx = 0; idx < code.length(); idx++) {// for문 생성
+            } else if (a != b && b != c && a != c) {// a,b,c 다 다를 때
+                // answer a + b + c 계산해서 넣기
+                answer = a + b + c;
 
-                if (mode == 0) {// mode가 0일 때
-                    if (code.charAt(idx) != '1' && idx % 2 == 0) {// code의 idx번째 문자가 1이 아닐 때 와 idx가 짝수일 때
-
-                        ret += code.charAt(idx); // answer에 값 넣어주기
-
-                    } else if (code.charAt(idx) == '1') {// code의 idx번째 문자가 1이 맞을 때
-
-                        mode = 1; // mode의 값을 1로 변경
-                    }
-                } else {// mode가 1일 때
-                    if (code.charAt(idx) != '1' && idx % 2 == 1) {// code의 idx번째 문자가 1이 아닐 때 와 idx가 홀수일 때
-
-                        ret += code.charAt(idx);
-
-                    } else if (code.charAt(idx) == '1') {// code의 idx번째 문자가 1이 맞을 때
-
-                        mode = 0;// mode의 값을 0로 변경
-                    }
-                }
-            }
-            if (ret == "") {
-                ret = "EMPTY";
+            } else {// 두 개만 같고 하나는 틀릴 때
+                    // answer (a + b + c) × (a2 + b2 + c2 ) 계산해서 넣기
+                answer = (int) ((a + b + c) * (Math.pow(a, 2) + Math.pow(b, 2) + Math.pow(c, 2)));
             }
         }
-        answer = ret;
         return answer;
     }
 }
