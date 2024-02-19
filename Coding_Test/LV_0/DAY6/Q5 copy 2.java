@@ -1,6 +1,6 @@
 //문제 링크 : https://school.programmers.co.kr/learn/courses/30/lessons/181926
 
-package LV_0.DAY5;
+package LV_0.DAY6;
 
 class Solution {
     public int solution(int n, String control) {
