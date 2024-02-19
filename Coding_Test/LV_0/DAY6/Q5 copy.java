@@ -3,27 +3,30 @@
 package LV_0.DAY5;
 
 class Solution {
-    public int solution(int[] num_list) {
-        int answer = 0;
-        String odd = "";
-        String even = "";
+    public String solution(int[] numLog) {
+        String answer = "";
 
-        if (2 <= num_list.length && num_list.length <= 10) {// 길이 제한사항
+        for (int idx = 1; idx < numLog.length; idx++) {
 
-            for (int idx : num_list)// for-each문
+            if (numLog[idx] - numLog[idx - 1] == 1) { // 1인경우
 
-                if (1 <= idx && idx <= 9) {// 원소 범위 제한사항
+                answer += "w";
 
-                    if (idx % 2 == 1) { // 홀수일 때
-                        odd += Integer.toString(idx);
+            } else if (numLog[idx] - numLog[idx - 1] == -1) { // -1인경우
 
-                    } else {// 짝수일 때
-                        even += Integer.toString(idx);
-                    }
-                }
-            answer = Integer.parseInt(odd) + Integer.parseInt(even); // String타입을 int타입으로 변환 후 값 더 해서 출력
+                answer += "s";
+
+            } else if (numLog[idx] - numLog[idx - 1] == 10) { // 10인경우
+
+                answer += "d";
+
+            } else if (numLog[idx] - numLog[idx - 1] == -10) { // -10인경우
+
+                answer += "a";
+
+            }
+
         }
-
-        return answer;
+        return answer; // 값 반환
     }
 }
