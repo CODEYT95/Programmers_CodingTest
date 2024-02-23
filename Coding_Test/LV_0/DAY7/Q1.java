@@ -1,28 +1,33 @@
-//문제 링크 : https://school.programmers.co.kr/learn/courses/30/lessons/181927
+//문제 링크 : https://school.programmers.co.kr/learn/courses/30/lessons/181922
 
 package LV_0.DAY7;
 
 class Solution {
-    public int[] solution(int[] num_list) {
+    public int[] solution(int[] arr, int[][] queries) {
         int[] answer = {};
-        if (2 <= num_list.length && num_list.length <= 10) { // 길이 제한사항
+        answer = new int[arr.length];
 
-            answer = new int[num_list.length + 1]; // num_list 보다 길이가 1 더 긴 int answer 배열 만들기
+        for (int idx = 0; idx < queries.length; idx++) { // queries의 값들을 차례대로 s,e,k에 저장
 
-            for (int idx = 0; idx < num_list.length; idx++) {// for문 이용해서 answer배열에 num_list 배열 옮기기
+            int s = queries[idx][0];
+            int e = queries[idx][1];
+            int k = queries[idx][2];
 
-                answer[idx] = num_list[idx];
-            }
-            if (answer[answer.length - 2] > answer[answer.length - 3]) {// 마지막 원소가 그전 원소보다 큰 경우
+            for (int i = s; i <= e; i++) { // s ≤ i ≤ e 로 arr배열의 범위 설정
 
-                answer[answer.length - 1] = answer[answer.length - 2] - answer[answer.length - 3];
+                if (i == 0 || i % k == 0) { // i가 0인 경우 or i가 k의 배수인 경우
 
-            } else {// 마지막 원소가 그전 원소보다 작은 경우
+                    arr[i] += 1;
 
-                answer[answer.length - 1] = answer[answer.length - 2] * 2;
+                }
             }
         }
 
-        return answer; // 값 반환
+        for (int i = 0; i < arr.length; i++) {// answer에 값 옮겨주기
+            answer[i] = arr[i];
+        }
+
+        return answer;// 값 반환
     }
+
 }
