@@ -1,6 +1,6 @@
 //문제 링크 : https://school.programmers.co.kr/learn/courses/30/lessons/181927
 
-package LV_0.DAY6;
+package LV_0.DAY7;
 
 class Solution {
     public int[] solution(int[] num_list) {
