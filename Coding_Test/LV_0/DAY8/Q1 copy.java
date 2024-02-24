@@ -1,33 +1,78 @@
-//문제 링크 : https://school.programmers.co.kr/learn/courses/30/lessons/181922
+//문제 링크 : https://school.programmers.co.kr/learn/courses/30/lessons/181916
 
-package LV_0.DAY7;
+package LV_0.DAY8;
 
 class Solution {
-    public int[] solution(int[] arr, int[][] queries) {
-        int[] answer = {};
-        answer = new int[arr.length];
+    public int solution(int a, int b, int c, int d) {
+        int answer = 0;
+        int p = 0;
+        int q = 0;
+        int r = 0;
 
-        for (int idx = 0; idx < queries.length; idx++) { // queries의 값들을 차례대로 s,e,k에 저장
+        if (a == b && b == c && c == d) {
+            // 4개가 다 같을 때
 
-            int s = queries[idx][0];
-            int e = queries[idx][1];
-            int k = queries[idx][2];
+            p = a;
+            answer = 1111 * p;
 
-            for (int i = s; i <= e; i++) { // s ≤ i ≤ e 로 arr배열의 범위 설정
+        } else if (a == b && b == c || a == b && b == d || a == d && d == c || b == c && c == d) {
+            // 3개가 같고 1개는 다를 때
 
-                if (i == 0 || i % k == 0) { // i가 0인 경우 or i가 k의 배수인 경우
-
-                    arr[i] += 1;
-
-                }
+            if (a == b && b == c) {
+                answer = (10 * a + d) * (10 * a + d);
+            } else if (a == b && b == d) {
+                answer = (10 * a + c) * (10 * a + c);
+            } else if (a == d && d == c) {
+                answer = (10 * a + b) * (10 * a + b);
+            } else if (b == c && c == d) {
+                answer = (10 * c + a) * (10 * c + a);
             }
+
+        } else if ((a == b && c == d) || (a == c && b == d) || (a == d && c == b)) {
+            // 두 개씩 같을 때
+            if (a == b && c == d) {
+                answer = (a + c) * Math.abs(a - c);
+            } else if (a == c && b == d) {
+                answer = (a + b) * Math.abs(a - b);
+            } else if (a == d && c == b) {
+                answer = (a + c) * Math.abs(a - c);
+            }
+
+        } else if ((a == b && c != d) || (a == c && b != d) || (a == d && c != b) || (b == c && a != d)
+                || (b == d && a != c) || (c == d && a != b)) {
+            // 두 개는 같고 두 개가 서로 다를 때
+            if (a == b && c != d) {
+                answer = c * d;
+            } else if (a == c && b != d) {
+                answer = b * d;
+            } else if (a == d && c != b) {
+                answer = c * b;
+            } else if (b == c && a != d) {
+                answer = a * d;
+            } else if (b == d && a != c) {
+                answer = c * a;
+            } else if (c == d && a != b) {
+                answer = a * b;
+            }
+        } else if (a != b && a != c && a != d && b != c && b != d && c != d) {
+            // 모두 다를 때
+
+            answer = a;
+
+            if (b < answer) {
+                answer = b;
+            }
+
+            if (c < answer) {
+                answer = c;
+            }
+
+            if (d < answer) {
+                answer = d;
+            }
+
         }
 
-        for (int i = 0; i < arr.length; i++) {// answer에 값 옮겨주기
-            answer[i] = arr[i];
-        }
-
-        return answer;// 값 반환
+        return answer;
     }
-
 }
