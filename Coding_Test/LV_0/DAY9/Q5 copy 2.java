@@ -1,40 +1,28 @@
-//문제 링크 : https://school.programmers.co.kr/learn/courses/30/lessons/181913
-package LV_0.DAY8;
+//문제 링크 : https://school.programmers.co.kr/learn/courses/30/lessons/181912
+
+package LV_0.DAY9;
 
 class Solution {
-    public String solution(String my_string, int[][] queries) {
-        String answer = "";
-        char temp1; // 임시로 값 옮겨둘 곳1
-        char temp2; // 임시로 값 옮겨둘 곳2
-        char arr[] = my_string.toCharArray(); // my_string 배열로 만들기
+    public int[] solution(String[] intStrs, int k, int s, int l) {
+        int[] answer = {};
+        int[] result = new int[10000]; // intStrs의 길이 만큼의 result배열 생성
+        int count = 0;
 
-        for (int i = 0; i < queries.length; i++) {// s,e값 for문으로 만들기
+        for (int idx = 0; idx < intStrs.length; idx++) { // intStrs.length만큼의 for문 생성
 
-            int s = queries[i][0];
-            int e = queries[i][1];
+            if (k < Integer.parseInt(intStrs[idx].substring(s, s + l))) { // k보다 큰 경우
 
-            for (int k = s; s < e; k++) {
-
-                if (k < e) {// e가k보다 클 때
-
-                    // 임시로 값 저장
-                    temp1 = arr[k];
-                    temp2 = arr[e];
-
-                    // 값 서로 바꿔주기
-                    arr[k] = temp2;
-                    arr[e] = temp1;
-
-                }
-
-                e--;
+                result[count] = Integer.parseInt(intStrs[idx].substring(s, s + l)); // result에 값 넣어주기
+                count += 1;
             }
         }
-        for (char i : arr) {// 값 옮겨주기
+        answer = new int[count];
+        for (int i = 0; i < count; i++) {// 값 옮기기
 
-            answer += i;
+            answer[i] = result[i];
+
         }
 
-        return answer;
+        return answer;// 값 반환
     }
 }
