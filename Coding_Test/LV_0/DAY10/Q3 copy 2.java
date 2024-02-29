@@ -1,31 +1,22 @@
-//문제 링크 : https://school.programmers.co.kr/learn/courses/30/lessons/181905
+//문제 링크 : https://school.programmers.co.kr/learn/courses/30/lessons/181904
 
 package LV_0.DAY10;
 
 class Solution {
-    public String solution(String my_string, int s, int e) {
+    public String solution(String my_string, int m, int c) {
         String answer = "";
-        char temp1;
-        char temp2;
-        char arr[] = my_string.toCharArray(); // char타입 arr 배열에 my_string문자열 넣어주기
 
-        for (int i = s; i < e; i++) {// 값 바꿔주기
+        for (int i = c - 1; i < my_string.length(); i += m) {// my_string길이를 이용한 i+=m for문 생성
 
-            if (i < e) {
-                temp1 = arr[i];
-                temp2 = arr[e];
+            if (m == 1) { // m이 1일 때
 
-                arr[i] = temp2;
-                arr[e] = temp1;
+                answer = my_string; // answer에 my_string값 그대로 넣어주기
 
-                e--;
+            } else {// m이 1이 아닐 때
+
+                answer += my_string.charAt(i); // 해당하는 문자 answer에 넣어주기
+
             }
-        }
-
-        for (int i = 0; i < my_string.length(); i++) {// answer에 값 옮겨주기
-
-            answer += arr[i];
-
         }
 
         return answer;// 값 반환
