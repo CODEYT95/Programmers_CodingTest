@@ -1,30 +1,19 @@
-//문제 링크 : https://school.programmers.co.kr/learn/courses/30/lessons/181905
+//문제 링크 : https://school.programmers.co.kr/learn/courses/30/lessons/181903
 
 package LV_0.DAY10;
 
 class Solution {
-    public String solution(String my_string, int s, int e) {
+    public String solution(int q, int r, String code) {
         String answer = "";
-        char temp1;
-        char temp2;
-        char arr[] = my_string.toCharArray(); // char타입 arr 배열에 my_string문자열 넣어주기
+        char arr[] = code.toCharArray();// char타입 배열에 code넣기
 
-        for (int i = s; i < e; i++) {// 값 바꿔주기
+        for (int idx = 0; idx < code.length(); idx++) {// code길이를 이용한 for문 생성
 
-            if (i < e) {
-                temp1 = arr[i];
-                temp2 = arr[e];
+            if (idx % q == r) { // 인덱스를 q로 나눈 나머지가 r인 경우
 
-                arr[i] = temp2;
-                arr[e] = temp1;
+                answer += arr[idx]; // answer에 값 넣기
 
-                e--;
             }
-        }
-
-        for (int i = 0; i < my_string.length(); i++) {// answer에 값 옮겨주기
-
-            answer += arr[i];
 
         }
 
