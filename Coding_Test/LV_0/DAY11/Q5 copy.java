@@ -1,22 +1,20 @@
-//문제 링크 : https://school.programmers.co.kr/learn/courses/30/lessons/181903
+//문제 링크 : https://school.programmers.co.kr/learn/courses/30/lessons/181901
 
-package LV_0.DAY10;
+package LV_0.DAY11;
 
 class Solution {
-    public String solution(int q, int r, String code) {
-        String answer = "";
-        char arr[] = code.toCharArray();// char타입 배열에 code넣기
+    public int[] solution(int n, int k) {
+        int[] answer = {};
+        int idx = 0;// answer의 인덱스로 활용
+        answer = new int[n / k];// n을 k로 나눈 값을 answer의 길이로 설정
 
-        for (int idx = 0; idx < code.length(); idx++) {// code길이를 이용한 for문 생성
+        for (int i = k; i <= n; i += k) {// n이하의 k배수 for문 생성
 
-            if (idx % q == r) { // 인덱스를 q로 나눈 나머지가 r인 경우
-
-                answer += arr[idx]; // answer에 값 넣기
-
-            }
+            answer[idx] = i; // answer에 값 넣기
+            idx++;
 
         }
 
-        return answer;// 값 반환
+        return answer; // 값 반환
     }
 }
