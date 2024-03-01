@@ -1,6 +1,6 @@
 //문제 링크 : https://school.programmers.co.kr/learn/courses/30/lessons/181900
 
-package LV_0.DAY10;
+package LV_0.DAY11;
 
 class Solution {
     public String solution(String my_string, int[] indices) {
