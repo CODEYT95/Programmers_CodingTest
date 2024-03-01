@@ -1,17 +1,23 @@
-//문제 링크 : https://school.programmers.co.kr/learn/courses/30/lessons/181903
+//문제 링크 : https://school.programmers.co.kr/learn/courses/30/lessons/181900
 
 package LV_0.DAY10;
 
 class Solution {
-    public String solution(int q, int r, String code) {
+    public String solution(String my_string, int[] indices) {
         String answer = "";
-        char arr[] = code.toCharArray();// char타입 배열에 code넣기
+        char arr[] = my_string.toCharArray(); // my_string char타입 배열로 만들어주기
 
-        for (int idx = 0; idx < code.length(); idx++) {// code길이를 이용한 for문 생성
+        for (int i = 0; i < indices.length; i++) {// indices길이를 이용한 for문 생성
 
-            if (idx % q == r) { // 인덱스를 q로 나눈 나머지가 r인 경우
+            arr[indices[i]] = '0';// indices[i]에 해당하는 arr값 '0' 으로 바꿔주기
 
-                answer += arr[idx]; // answer에 값 넣기
+        }
+
+        for (char i : arr) {// arr배열의 값 for-each로 뽑기
+
+            if (i != '0') {// i 가 문자'0'이 아닌 경우
+
+                answer += i;// answer에 값 넣어주기
 
             }
 
