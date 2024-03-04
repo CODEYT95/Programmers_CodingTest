@@ -1,21 +1,49 @@
 //문제 링크 : https://school.programmers.co.kr/learn/courses/30/lessons/181898
 
-package LV_0.DAY11;
+package LV_0.DAY12;
+
+import java.util.LinkedList;
 
 class Solution {
-    public int solution(int[] arr, int idx) {
-        int answer = -1;
-
-        for (int i = 0; i < arr.length; i++) { // arr의 길이를 이용한 for문 생성
-
-            if (i >= idx && arr[i] == 1) { // i가 idx보다 크거나 같으면서 1인 가장 작은 인덱스
-
-                answer = i;// 가장 작은 인덱스를 찾아야 하므로 1을 찾으면 break를 써서 for문 종료
-                break;
+    public LinkedList<Integer> solution(int n, int[] slicer, int[] num_list) {
+        
+        LinkedList<Integer> answer = new LinkedList<Integer>();//LinkedList 객체 생성
+        
+        if(n == 1){//n이 1일 때
+            
+            for(int i=0; i<=slicer[1]; i++){//0번 인덱스부터 slicer[1]번 인덱스까지
+                
+                answer.addLast(num_list[i]); //answer에 값 추가
+                
             }
-
+            
+        }else if(n == 2){//n이 2일 때
+            
+            for(int i=slicer[0]; i<num_list.length; i++){//slicer[0]번 인덱스부터 마지막 인덱스까지
+                
+                answer.addLast(num_list[i]); //answer에 값 추가
+                
+            }
+            
+        }else if(n == 3){//n이 3일 때
+            
+            for(int i=slicer[0]; i<=slicer[1]; i++){//slicer[0]번 인덱스부터 slicer[1]번 인덱스까지
+                
+                answer.addLast(num_list[i]); //answer에 값 추가
+                
+            }
+            
+        }else{//n이 4일 때
+            
+            for(int i=slicer[0]; i<=slicer[1]; i+=slicer[2]){//slicer[0]번 인덱스부터 slicer[1]번 인덱스까지 slicer[2] 간격으로
+                
+                answer.addLast(num_list[i]); //answer에 값 추가
+                
+            }
+            
         }
-
+        
+        
         return answer;// 값 반환
     }
 }
