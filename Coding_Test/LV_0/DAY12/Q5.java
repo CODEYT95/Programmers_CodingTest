@@ -1,21 +1,25 @@
 //문제 링크 : https://school.programmers.co.kr/learn/courses/30/lessons/181898
 
-package LV_0.DAY11;
+package LV_0.DAY12;
+
+import java.util.LinkedList;
 
 class Solution {
-    public int solution(int[] arr, int idx) {
-        int answer = -1;
+    public LinkedList<Integer> solution(int[] arr, int[][] intervals) {
+        LinkedList<Integer> answer = new LinkedList<Integer>();
 
-        for (int i = 0; i < arr.length; i++) { // arr의 길이를 이용한 for문 생성
+        for (int i = 0; i < intervals.length; i++) {// intervals길이를 이용한 for문 생성
 
-            if (i >= idx && arr[i] == 1) { // i가 idx보다 크거나 같으면서 1인 가장 작은 인덱스
+            int s = intervals[i][0]; // 시작 값
+            int e = intervals[i][1]; // 끝 값
 
-                answer = i;// 가장 작은 인덱스를 찾아야 하므로 1을 찾으면 break를 써서 for문 종료
-                break;
+            for (int j = s; j <= e; j++) {// 양끝값의 사이의 값을 이용한 for문 생성
+
+                answer.addLast(arr[j]);// answer에 값 넣어주기
+
             }
-
         }
 
-        return answer;// 값 반환
+        return answer;
     }
 }
