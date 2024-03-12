@@ -1,4 +1,4 @@
-//문제 링크 : https://school.programmers.co.kr/learn/courses/30/lessons/181895
+//문제 링크 : https://school.programmers.co.kr/learn/courses/30/lessons/181894
 
 package LV_0.DAY12;
 
