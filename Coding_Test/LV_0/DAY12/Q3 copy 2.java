@@ -2,24 +2,37 @@
 
 package LV_0.DAY12;
 
-import java.util.LinkedList;
+import java.util.*;
 
 class Solution {
-    public LinkedList<Integer> solution(int[] arr, int[][] intervals) {
-        LinkedList<Integer> answer = new LinkedList<Integer>();
+    public int[] solution(int[] arr) {
+        int[] answer = {};
+        int start = 0;
+        int end = 0;
 
-        for (int i = 0; i < intervals.length; i++) {// intervals길이를 이용한 for문 생성
+        for (int i = 0; i < arr.length; i++) {// 처음 나오는 2 인덱스 구하기
 
-            int s = intervals[i][0]; // 시작 값
-            int e = intervals[i][1]; // 끝 값
-
-            for (int j = s; j <= e; j++) {// 양끝값의 사이의 값을 이용한 for문 생성
-
-                answer.addLast(arr[j]);// answer에 값 넣어주기
-
+            if (arr[i] == 2) {
+                start = i;
+                break;
             }
-        }
 
+        }
+        for (int i = arr.length - 1; i > -1; i--) {// 마지막에 나오는 2 인덱스 구하기
+
+            if (arr[i] == 2) {
+                end = i;
+                break;
+            }
+
+        }
+        // 값 넣기
+        if (end != 0) {
+            answer = Arrays.copyOfRange(arr, start, end + 1);
+        } else {
+            answer = new int[1];
+            answer[0] = -1;
+        }
         return answer;
     }
 }
