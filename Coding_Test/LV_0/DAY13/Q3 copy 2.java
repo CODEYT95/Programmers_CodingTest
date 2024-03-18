@@ -2,42 +2,22 @@
 
 package LV_0.DAY13;
 
-import java.util.*;
-
 class Solution {
-    public LinkedList<String> solution(String[] str_list) {
-        LinkedList<String> answer = new LinkedList<String>();
-        String str = "";
-        for (String i : str_list) {
-            str += i;
+    public int[] solution(int[] num_list, int n) {
+        int[] answer = {};
+        int count = 0;
+
+        for (int i = 0; i < num_list.length; i += n) {// num_list길이를 이용한 for문 생성
+
+            count++;// answer길이 count에 저장
         }
 
-        if (str.contains("l") || str.contains("r")) {// l만 있거나 / r만 있거나 / 둘 다 있거나
+        answer = new int[count];// answer 길이 생성
+        for (int i = 0; i < answer.length; i++) {//// answer길이를 이용한 for문 생성
 
-            for (int i = 0; i < str_list.length; i++) {// str_list길이를 이용한 for문
-
-                if (str_list[i].equals("l")) {// l이 먼저 나올 때
-
-                    for (int j = 0; j < i; j++) {
-
-                        answer.add(str_list[j]);// answer에 값 넣어주기
-
-                    }
-                    break;
-                } else if (str_list[i].equals("r")) {// r이 먼저 나올 때
-
-                    for (int j = i + 1; j < str_list.length; j++) {
-
-                        answer.add(str_list[j]);// answer에 값 넣어주기
-
-                    }
-                    break;
-                }
-
-            }
+            answer[i] = num_list[n * i]; // answer에 값 넣어주기
 
         }
-
         return answer;// 값 반환
     }
 }
