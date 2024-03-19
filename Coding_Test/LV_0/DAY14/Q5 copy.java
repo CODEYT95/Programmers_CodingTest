@@ -2,22 +2,18 @@
 
 package LV_0.DAY13;
 
+import java.util.*;
+
 class Solution {
-    public int[] solution(int[] num_list, int n) {
-        int[] answer = {};
-        int count = 0;
+    public LinkedList<String> solution(String[] names) {
+        LinkedList<String> answer = new LinkedList<String>();// LikedList 객체 생성
 
-        for (int i = 0; i < num_list.length; i += n) {// num_list길이를 이용한 for문 생성
+        for (int i = 0; i < names.length; i += 5) {// 5명씩 묶은 그룹의 가장 앞에 서있는 사람 뽑기
 
-            count++;// answer길이 count에 저장
-        }
-
-        answer = new int[count];// answer 길이 생성
-        for (int i = 0; i < answer.length; i++) {//// answer길이를 이용한 for문 생성
-
-            answer[i] = num_list[n * i]; // answer에 값 넣어주기
+            answer.add(names[i]);// answer에 값 넣어주기
 
         }
+
         return answer;// 값 반환
     }
 }
